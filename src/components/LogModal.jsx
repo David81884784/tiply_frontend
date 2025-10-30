@@ -72,7 +72,7 @@ function PasswordField({ value, onChange, label = "Parolă", autoComplete }) {
 
 export default function LogModal({ isOpen, onClose }) {
   // 🔹 Varianta locală
-  const BASE_URL = "https://tiply-backend-3d8o9p51i-davids-projects-a9354ccb.vercel.app/";
+  const BASE_URL = "https://tiply-backend-3d8o9p51i-davids-projects-a9354ccb.vercel.app";
   const navigate = useNavigate();
   const { login } = useAuth();
 
