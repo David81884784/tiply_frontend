@@ -2,8 +2,8 @@ const handleRegister = async (e) => {
   e.preventDefault();
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
-      method: 'POST',
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, { 
+    method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nume, email, parola }),
     });
