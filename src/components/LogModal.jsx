@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import Alert from './Alert';
 
 export default function LogModal({ isOpen, onClose }) {
+  // URL backend — Vercel sau local
   const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -17,6 +18,7 @@ export default function LogModal({ isOpen, onClose }) {
   const [nume, setNume] = useState('');
   const [confirmParola, setConfirmParola] = useState('');
 
+  // Alert timeout
   useEffect(() => {
     if (alertMessage) {
       const timeout = setTimeout(() => setAlertMessage(null), 3000);
@@ -24,11 +26,12 @@ export default function LogModal({ isOpen, onClose }) {
     }
   }, [alertMessage]);
 
+  // --- Login ---
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${BASE_URL}/login`, {
+      const response = await fetch(`${BASE_URL}/auth/login`, {   // ✅ ruta corectă
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, parola }),
@@ -66,6 +69,7 @@ export default function LogModal({ isOpen, onClose }) {
     }
   };
 
+  // --- Register ---
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -76,7 +80,7 @@ export default function LogModal({ isOpen, onClose }) {
     }
 
     try {
-      const response = await fetch(`${BASE_URL}/register`, {
+      const response = await fetch(`${BASE_URL}/auth/register`, {   // ✅ ruta corectă
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nume, email, parola }),
